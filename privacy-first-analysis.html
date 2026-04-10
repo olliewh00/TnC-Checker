@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy-First Analysis | Terms & Conditions Simplifier</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap');
+
+    :root {
+      --bg: #f3f4f6;
+      --surface: #ffffff;
+      --text: #121212;
+      --muted: #4b5563;
+      --border: #d1d5db;
+      --shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      --accent: #ffe45d;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: 'Space Grotesk', 'Avenir Next', 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    .topbar {
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+    }
+
+    .topbar-inner {
+      width: min(1120px, 100%);
+      margin: 0 auto;
+      padding: 14px clamp(16px, 3vw, 30px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand {
+      margin: 0;
+      font-size: 1.05rem;
+      font-weight: 700;
+    }
+
+    .topbar-links {
+      display: flex;
+      gap: 14px;
+      font-size: 0.92rem;
+    }
+
+    .topbar-links a {
+      color: var(--muted);
+      text-decoration: none;
+      border-bottom: 2px solid transparent;
+      padding: 4px 0;
+    }
+
+    .topbar-links a:hover,
+    .topbar-links a.active {
+      color: #111827;
+      border-color: #111827;
+    }
+
+    .container {
+      width: min(900px, 100%);
+      margin: 28px auto;
+      padding: 0 clamp(16px, 3vw, 30px);
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      padding: 24px;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: clamp(1.7rem, 3.2vw, 2.3rem);
+    }
+
+    .tag {
+      display: inline-block;
+      background: var(--accent);
+      border-radius: 8px;
+      padding: 5px 10px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    p {
+      margin: 10px 0;
+      line-height: 1.65;
+      color: #1f2937;
+    }
+
+    .list {
+      margin-top: 14px;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      background: #f9fafb;
+      padding: 12px 14px;
+    }
+
+    .list li {
+      margin: 8px 0;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 640px) {
+      .topbar-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .card {
+        padding: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="topbar" aria-label="Main">
+    <div class="topbar-inner">
+      <p class="brand">Terms &amp; Conditions Simplifier</p>
+      <div class="topbar-links">
+        <a href="index.html">Home</a>
+        <a href="how-it-works.html">How it works</a>
+        <a href="why-this-matters.html">Why this matters</a>
+        <a class="active" href="privacy-first-analysis.html">Privacy-first analysis</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <section class="card">
+      <span class="tag">Privacy-first analysis</span>
+      <h1>Your text stays in your browser</h1>
+      <p>The current version of this tool uses client-side keyword detection only. There is no backend, no database, and no external API call used in analysis.</p>
+      <p>That means your pasted policy text is processed directly in your browser session.</p>
+
+      <ul class="list">
+        <li>No account required to run a check.</li>
+        <li>No third-party API receives your policy text.</li>
+        <li>No uploaded files or stored terms history.</li>
+        <li>Simple, transparent keyword scoring logic you can inspect in code.</li>
+      </ul>
+
+      <p>If you decide to extend this app later with cloud features, keep this page updated so users understand exactly how their data is handled.</p>
+    </section>
+  </main>
+</body>
+</html>

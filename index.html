@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms & Conditions Simplifier</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap');
+
+    :root {
+      --bg: #f3f4f6;
+      --surface: #ffffff;
+      --text: #121212;
+      --muted: #4b5563;
+      --primary: #0e7c66;
+      --primary-hover: #0b6654;
+      --low: #15803d;
+      --medium: #c2410c;
+      --high: #b91c1c;
+      --accent: #ffe45d;
+      --border: #d1d5db;
+      --shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: 'Space Grotesk', 'Avenir Next', 'Segoe UI', sans-serif;
+      color: var(--text);
+      background: var(--bg);
+    }
+
+    .site {
+      min-height: 100vh;
+      padding: 0 0 40px;
+    }
+
+    .container {
+      width: min(1120px, 100%);
+      margin: 0 auto;
+      padding: 0 clamp(16px, 3vw, 30px);
+    }
+
+    .topbar {
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+    }
+
+    .topbar-inner {
+      width: min(1120px, 100%);
+      margin: 0 auto;
+      padding: 14px clamp(16px, 3vw, 30px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand {
+      margin: 0;
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .topbar-links {
+      display: flex;
+      gap: 14px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .topbar-links a {
+      color: var(--muted);
+      text-decoration: none;
+      padding: 4px 0;
+      border-bottom: 2px solid transparent;
+      transition: color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .topbar-links a:hover {
+      color: #111827;
+    }
+
+    .topbar-links a.active {
+      color: #111827;
+      border-color: #111827;
+    }
+
+    .app {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 22px;
+      margin-top: 22px;
+      animation: rise 0.55s ease;
+    }
+
+    @keyframes rise {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .page-header {
+      margin: 26px 0 0;
+      padding: 26px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-header::before {
+      content: '';
+      position: absolute;
+      top: -60px;
+      right: -70px;
+      width: 240px;
+      height: 240px;
+      border-radius: 999px;
+      background: rgba(255, 228, 93, 0.2);
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #111827;
+      position: relative;
+      z-index: 1;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      max-width: 20ch;
+      position: relative;
+      z-index: 1;
+    }
+
+    .subtitle {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-note {
+      margin: 14px 0 0;
+      font-size: 0.93rem;
+      color: #111827;
+      font-weight: 600;
+      display: inline-block;
+      background: var(--accent);
+      border-radius: 8px;
+      padding: 6px 10px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .intro {
+      margin: 12px 0 0;
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #1f2937;
+      max-width: 78ch;
+      position: relative;
+      z-index: 1;
+    }
+
+    .typewriter-caret {
+      display: inline-block;
+      width: 0.6ch;
+      animation: blink 0.9s steps(1, end) infinite;
+    }
+
+    @keyframes blink {
+      0%, 49% { opacity: 1; }
+      50%, 100% { opacity: 0; }
+    }
+
+    .panel {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      padding: 18px;
+    }
+
+    .input-wrap {
+      border: 1px solid #e5e7eb;
+      background: #f9fafb;
+      border-radius: 10px;
+      padding: 12px;
+    }
+
+    label {
+      display: block;
+      font-size: 1.02rem;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 220px;
+      resize: vertical;
+      border: 1px solid #d1d5db;
+      border-radius: 10px;
+      padding: 16px;
+      font: inherit;
+      font-size: 1.02rem;
+      line-height: 1.5;
+      color: var(--text);
+      background: #ffffff;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    textarea:focus {
+      border-color: #111827;
+      box-shadow: 0 0 0 4px rgba(17, 24, 39, 0.08);
+    }
+
+    .actions {
+      margin-top: 14px;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    button {
+      border: none;
+      border-radius: 10px;
+      background: #111827;
+      color: #ffffff;
+      font: inherit;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 12px 24px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(17, 24, 39, 0.22);
+      transition: transform 0.15s ease, filter 0.2s ease;
+    }
+
+    button:hover {
+      filter: brightness(1.05);
+      transform: translateY(-1px);
+    }
+
+    button:active {
+      transform: translateY(0);
+    }
+
+    .result {
+      margin-top: 14px;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      padding: 18px;
+      background: #f9fafb;
+    }
+
+    .result h2 {
+      margin: 0 0 14px;
+      font-size: 1.2rem;
+    }
+
+    .result-section {
+      margin-bottom: 12px;
+      border: 1px solid #e5e7eb;
+      background: #ffffff;
+      border-radius: 10px;
+      padding: 12px;
+    }
+
+    .result-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .result-section h3 {
+      margin: 0 0 8px;
+      font-size: 1.02rem;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 18px;
+      line-height: 1.55;
+    }
+
+    li + li {
+      margin-top: 5px;
+    }
+
+    .score {
+      display: inline-block;
+      border-radius: 999px;
+      padding: 7px 12px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.01em;
+      border: 1px solid transparent;
+    }
+
+    .low {
+      color: var(--low);
+      background: rgba(21, 128, 61, 0.1);
+      border-color: rgba(21, 128, 61, 0.25);
+    }
+
+    .medium {
+      color: var(--medium);
+      background: rgba(194, 65, 12, 0.1);
+      border-color: rgba(194, 65, 12, 0.25);
+    }
+
+    .high {
+      color: var(--high);
+      background: rgba(185, 28, 28, 0.1);
+      border-color: rgba(185, 28, 28, 0.25);
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    @media (max-width: 920px) {
+      .app {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .site {
+        padding-top: 0;
+      }
+
+      .topbar-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .page-header,
+      .panel {
+        padding: 14px;
+      }
+
+      textarea {
+        min-height: 190px;
+      }
+
+      .actions {
+        justify-content: stretch;
+      }
+
+      button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="site">
+    <nav class="topbar" aria-label="Main">
+      <div class="topbar-inner">
+        <p class="brand">Terms &amp; Conditions Simplifier</p>
+        <div class="topbar-links">
+          <a class="active" href="index.html">Home</a>
+          <a href="how-it-works.html">How it works</a>
+          <a href="why-this-matters.html">Why this matters</a>
+          <a href="privacy-first-analysis.html">Privacy-first analysis</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <header class="page-header">
+        <p class="eyebrow">Privacy Helper</p>
+        <h1>"I read the Terms" might be the most common click-without-reading moment online.</h1>
+        <p class="subtitle">No one reads Terms & Conditions — this tool helps you understand them.</p>
+        <p class="hero-note">Paste any policy text and get a quick plain-language read on privacy risk.</p>
+        <p class="intro"><span id="typewriterText"></span><span class="typewriter-caret">|</span></p>
+      </header>
+
+      <main class="app">
+        <section class="panel">
+          <div class="input-wrap">
+            <label for="termsInput">Paste Terms & Conditions text:</label>
+            <textarea
+              id="termsInput"
+              placeholder="Paste the full policy or terms text here..."
+              aria-label="Terms and conditions input"
+            ></textarea>
+          </div>
+
+          <div class="actions">
+            <button id="simplifyBtn" type="button">Simplify</button>
+          </div>
+        </section>
+
+        <section class="panel">
+          <section class="result" id="result" aria-live="polite">
+            <h2>Analysis</h2>
+            <p class="muted">Enter text and click Simplify to see a plain-language summary and privacy risk score.</p>
+          </section>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    const simplifyBtn = document.getElementById('simplifyBtn');
+    const termsInput = document.getElementById('termsInput');
+    const result = document.getElementById('result');
+
+    const rules = [
+      {
+        keyword: 'third party',
+        points: 2,
+        summary: 'Your information may be shared with outside companies.',
+        warning: '⚠️ Your data may be shared with third parties.'
+      },
+      {
+        keyword: 'data sharing',
+        points: 2,
+        summary: 'The policy mentions sharing your data with other entities.',
+        warning: '⚠️ This service may share your data beyond the platform.'
+      },
+      {
+        keyword: 'location',
+        points: 2,
+        summary: 'The service may collect or use your location details.',
+        warning: '📍 This service may track your location.'
+      },
+      {
+        keyword: 'cookies',
+        points: 1,
+        summary: 'Cookies are used, likely for analytics, personalization, or ads.',
+        warning: '🍪 Cookies are used to monitor your behavior.'
+      },
+      {
+        keyword: 'tracking',
+        points: 2,
+        summary: 'The policy allows activity tracking on the app or website.',
+        warning: '👀 Your behavior may be tracked across sessions.'
+      },
+      {
+        keyword: 'personal information',
+        points: 1,
+        summary: 'Personal information is collected and processed.',
+        warning: '🧾 Personal information collection is explicitly stated.'
+      }
+    ];
+
+    function escapeHtml(text) {
+      return text
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    function getScoreLabel(totalPoints) {
+      if (totalPoints <= 2) {
+        return { label: 'Low Risk', className: 'low' };
+      }
+      if (totalPoints <= 4) {
+        return { label: 'Medium Risk', className: 'medium' };
+      }
+      return { label: 'High Risk', className: 'high' };
+    }
+
+    function analyzeTerms(inputText) {
+      const normalized = inputText.toLowerCase();
+      const matchedRules = [];
+      let score = 0;
+
+      for (const rule of rules) {
+        if (normalized.includes(rule.keyword)) {
+          matchedRules.push(rule);
+          score += rule.points;
+        }
+      }
+
+      return { matchedRules, score };
+    }
+
+    function renderResults(inputText) {
+      if (!inputText.trim()) {
+        result.innerHTML = `
+          <h2>Analysis</h2>
+          <p class="muted">Please paste some Terms & Conditions text first.</p>
+        `;
+        return;
+      }
+
+      const { matchedRules, score } = analyzeTerms(inputText);
+      const scoreInfo = getScoreLabel(score);
+
+      let summaryItems = '';
+      let warningItems = '';
+
+      if (matchedRules.length === 0) {
+        summaryItems = '<li>No obvious risk-related keywords were found.</li>';
+        warningItems = '<li>✅ No major privacy risks detected based on keyword scan.</li>';
+      } else {
+        summaryItems = matchedRules
+          .map((rule) => `<li>${escapeHtml(rule.summary)}</li>`)
+          .join('');
+
+        warningItems = matchedRules
+          .map((rule) => `<li>${escapeHtml(rule.warning)}</li>`)
+          .join('');
+      }
+
+      result.innerHTML = `
+        <h2>Analysis</h2>
+
+        <div class="result-section">
+          <h3>Simplified Summary</h3>
+          <ul>${summaryItems}</ul>
+        </div>
+
+        <div class="result-section">
+          <h3>Potential Privacy Warnings</h3>
+          <ul>${warningItems}</ul>
+        </div>
+
+        <div class="result-section">
+          <h3>Privacy Score</h3>
+          <span class="score ${scoreInfo.className}">${scoreInfo.label}</span>
+        </div>
+      `;
+    }
+
+    simplifyBtn.addEventListener('click', () => {
+      renderResults(termsInput.value);
+    });
+
+    const typewriterText = document.getElementById('typewriterText');
+    const introLine = 'Do you hate reading through Terms & Conditions, or do you usually just click Accept and move on? Would you like to know what you are signing up for before you agree?';
+    let typeIndex = 0;
+
+    function playTypewriter() {
+      if (typeIndex <= introLine.length) {
+        typewriterText.textContent = introLine.slice(0, typeIndex);
+        typeIndex += 1;
+        setTimeout(playTypewriter, 20);
+      }
+    }
+
+    playTypewriter();
+  </script>
+</body>
+</html>
